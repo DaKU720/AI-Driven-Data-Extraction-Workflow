@@ -1,44 +1,44 @@
 # AI-Driven Data Extraction Workflow
 
-Ten projekt to w pełni działający schemat automatyzacji (Blueprint dla platformy [Make.com](https://make.com)), którego celem jest inteligentne i zautomatyzowane wyciąganie ustrukturyzowanych danych finansowych z nieustrukturyzowanego tekstu (np. e-maili, komunikatów czy notatek) przy pomocy narzędzi sztucznej inteligencji od OpenAI.
+This project is a fully functional automation blueprint for the [Make.com](https://make.com) platform, designed to intelligently and automatically extract structured financial data from unstructured text (e.g., emails, messages, or notes) using OpenAI's artificial intelligence tools.
 
-## 🔴 Problem, który rozwiązujemy
-W wielu firmach działy finansowe, administracji czy księgowości tracą setki godzin miesięcznie na manualne odczytywanie i wpisywanie danych z dokumentów i wiadomości. 
-Proces polegający na **ręcznym przepisywaniu (data entry)**:
-- Jest **niezwykle czasochłonny** i powtarzalny.
-- Prowadzi do **ludzkich błędów**, literówek w kwotach i pomyłek w kategoryzacji.
-- Utrudnia skalowanie biznesu w miarę wzrostu obrotów i liczby dokumentów.
+## 🔴 The Problem We Solve
+In many companies, finance, administrative, and accounting departments lose hundreds of hours every month manually reading and entering data from documents and messages.
+The process of **manual data entry**:
+- Is **extremely time-consuming** and repetitive.
+- Leads to **human errors**, typos in amounts, and categorization mistakes.
+- Hinders business scaling as revenue and document volume grow.
 
-## 🟢 Rozwiązanie: Automatyzacja wspierana przez AI
-Ten Blueprint tworzy rzetelny potok (pipeline), w którym:
-1. **Odbiór Danych:** Webhook lub inna integracja płynnie wyłapuje przychodzące, nieustrukturyzowane dane tekstowe.
-2. **AI-Driven Parsing:** Zapytanie jest formatowane do modeli **OpenAI (GPT / o1 models)** z wykorzystaniem specjalnie przygotowanego inżynierii promptów (Prompt Engineeringu). Sztuczna inteligencja skutecznie rozpoznaje kluczowe dane, takie jak data, kwoty, kontrahenci, opisy kosztów czy kategorie finansowe, z zamiarem wygenerowania czystego, twardego formatu (np. JSON).
-3. **Zapis ustrukturyzowany:** Gotowe informacje trafiają w pełni bezobsługowo w odpowiednie struktury baz danych (w tym przykładzie: systemów Core Banking lub odpowiedniego Arkusza Google).
+## 🟢 The Solution: AI-Powered Automation
+This Blueprint creates a reliable pipeline where:
+1. **Data Reception:** A Webhook or another integration seamlessly catches incoming, unstructured text data.
+2. **AI-Driven Parsing:** The query is formatted and sent to **OpenAI models (GPT / o1)** using specially crafted Prompt Engineering. The AI effectively recognizes key data points, such as dates, amounts, contractors, cost descriptions, or financial categories, intending to generate a clean, strict format (e.g., JSON).
+3. **Structured Storage:** The ready-to-use information is sent automatically and effortlessly into the appropriate databases or structures (in this example: Core Banking systems or a designated Google Sheet).
 
-## 📈 Benefity Biznesowe
-- **Redukcja Kosztów i Czasu pracy (ROI):** Zmniejszenie o 90%+ czasu potrzebnego do administracji danych. Zespół może skupić się w tym czasie na weryfikacji strategicznej, kontrolingu i analizie.
-- **Odporność na błędy (Consistency):** Zastąpienie zasobnego w błędy wklepywania poprzez zestandaryzowane wyciąganie JSON-ów przez LLM, które jest dużo powtarzalniejsze.
-- **Natychmiastowy Dostęp do Informacji:** Bieżące, nieprzerwane operacje (Real-time financial tracking), bez czekania na zbiorcze manualne księgowania pracownika.
-- **Bezpieczeństwo i Anonimowość Konfiguracji:** Szablon w tym repozytorium ma zanonimizowane wrażliwe wejścia (takie jak maile, połączenia z systemami), pozwalając na darmowe udostępnianie procesów z ochroną danych. 
+## 📈 Business Benefits
+- **Cost and Time Reduction (ROI):** Reduces data administration time by 90%+. The team can focus on strategic verification, controlling, and analysis instead.
+- **Error Resistance (Consistency):** Replaces error-prone manual entry with standardized JSON extraction by LLMs, which is far more consistent and reliable.
+- **Instant Access to Information:** Continuous, real-time financial tracking, without waiting for batch manual accounting by an employee.
+- **Security and Configuration Anonymity:** The template in this repository has sanitized sensitive inputs (such as emails, system connections), allowing for free sharing of the processes while protecting private data.
 
-## ⚙️ Uruchomienie projektu (Korzystanie z szablonu)
-Prywatne dane takie jak Twój adres e-mail, identyfikator połączeń z OpenAI / Google Sheets, czy też ID Arkuszy trzymaj w specjalnym pliku `.json`, unikając ujawniania ich w repozytorium GitHub!
+## ⚙️ How to Run the Project (Using the Template)
+Keep private data such as your email address, OpenAI / Google connection IDs, or Google Sheets IDs in a special `.json` file to avoid exposing them in a GitHub repository!
 
-1. Utwórz u siebie na dysku plik o nazwie `variables.json` (znajduje się w pliku `.gitignore`, więc na pewno nie wpadnie przez pomyłkę do sieci):
+1. Create a file named `variables.json` on your local drive (it is included in `.gitignore`, so it won't accidentally be pushed to the web):
 ```json
 {
-  "YOUR_EMAIL": "twoj_adres_email@example.com",
-  "YOUR_SPREADSHEET_ID": "id-twojego-arkusza",
+  "YOUR_EMAIL": "your_email_address@example.com",
+  "YOUR_SPREADSHEET_ID": "your-spreadsheet-id",
   "OPENAI_CONNECTION_ID": 1111111,
   "GOOGLE_CONNECTION_ID": 2222222
 }
 ```
 
-2. Uruchom skrypt w Pythonie z poziomu konsoli:
+2. Run the Python script from your terminal:
 ```bash
 python3 apply_variables.py
 ```
 
-Skrypt odczyta plik `AI_Financial_Extraction.blueprint.json`, przypisze do niego Twoje bezpieczne zmienne tekstowe i utworzy gotowy plik pod nazwą `AI_Financial_Extraction_Ready.json`. 
+The script will read the `AI_Financial_Extraction.blueprint.json` file, inject your secure text variables into it, and create a ready-to-import file named `AI_Financial_Extraction_Ready.json`.
 
-3. Ten ostatni wygenerowany plik importujesz na żywo w interfejsie platformy Make. gotowe!
+3. Import this final generated file directly into the Make.com platform interface. You're done!
